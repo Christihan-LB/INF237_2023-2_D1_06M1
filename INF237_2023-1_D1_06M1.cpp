@@ -1,20 +1,76 @@
-// INF237_2023-1_D1_06M1.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+using namespace std;
+
+int mayor(int arrNum[15], int n);
+void Fibonacci(int fibonacci[30]);
+void orden(int fibonacci[30], char arrWord[15], int arrNum[15], int n, int mayor);
+
+int main(int argc, char** argv) {
+	int n, i, num, Mayor;
+	int serie[15];
+	int arrNum[15], fibonacci[30];
+	char arrWord[15];
+	char word;
+	cout << "Ingrese la cantidad de numeros fibonacci y caracteres que tendra la palabra:  ";
+	cin >> n;
+	cout << "Ingrese la serie de numeros: ";
+	for (i = 0; i < n; i++) {
+		cin >> num;
+		arrNum[i] = num;
+	}
+	cout << "Ingrese la serie de letras:  ";
+	for (i = 0; i < n; i++) {
+		cin >> word;
+		arrWord[i] = word;
+	}
+	Fibonacci(fibonacci);
+	Mayor = mayor(arrNum, n);
+	orden(fibonacci, arrWord, arrNum, n, Mayor);
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+int mayor(int arrNum[15], int n) {
+	int i = 0, mayor = 0;
+	while (i < n) {
+		if (arrNum[i] > mayor) {
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+			mayor = arrNum[i];
+		}
+		i++;
+	}
+	return mayor;
+}
+
+void Fibonacci(int fibonacci[30]) {
+	fibonacci[0] = 1;
+	fibonacci[1] = 2;
+	for (int i = 2; i < 30; i++) {
+		fibonacci[i] = fibonacci[i - 1] + fibonacci[i - 2];
+	}
+
+}
+void orden(int fibonacci[30], char arrWord[15], int arrNum[15], int n, int mayor) {
+	int i = 0, j = 0;
+	bool stop = false, found = false;
+	cout << "La palabra decodificada es: ";
+	while (!stop) {
+
+		while (i < n) {
+			if (fibonacci[j] == arrNum[i]) {
+				cout << arrWord[i];
+				found = true;
+			}
+			i++;
+			if (i == n && found == false) {
+				cout << " ";
+			}
+		}
+		if (fibonacci[j] == mayor) {
+			stop = true;
+		}
+		j++;
+		i = 0;
+		found = false;
+	}
+}
