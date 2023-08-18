@@ -1,6 +1,10 @@
 #include <iostream>
 
-using namespace std;
+int main()
+{
+    std::cout << "Habla Causa!\n";
+
+}
 
 int mayor(int arrNum[15], int n); //comentario
 void Fibonacci(int fibonacci[30]);
