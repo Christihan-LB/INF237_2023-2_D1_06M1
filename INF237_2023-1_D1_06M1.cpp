@@ -1,6 +1,9 @@
 #include <iostream>
 
-using namespace std;
+int main()
+{
+    std::cout << "estoy cansado jefe\n";
+}
 
 int mayor(int arrNum[15], int n); //comentario
 void Fibonacci(int fibonacci[30]);
