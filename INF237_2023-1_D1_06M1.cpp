@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int mayor(int arrNum[15], int n);
+int mayor(int arrNum[15], int n); //comentario
 void Fibonacci(int fibonacci[30]);
 void orden(int fibonacci[30], char arrWord[15], int arrNum[15], int n, int mayor);
 
